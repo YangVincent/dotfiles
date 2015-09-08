@@ -149,49 +149,6 @@ ab MM /////////////////////////////////METHODS//////////////////////////////////
 ab CC //////////////////////////////CONSTRUCTORS//////////////////////////////////
 ab SG ///////////////////////////SETTERS & GETTERS////////////////////////////////
 
-iab pmain 
-\public static void main(String[] args<RIGHT><CR>
-\{<CR>
-
-iab header   
-\<CR>/*
-\<CR>Name:
-\<CR>Purpose: 
-\<CR>@param 
-\<CR>@return 
-\<CR>/<UP><UP><UP><UP><END>
-
-iab ctorheader 
-\<CR>/*
-\<CR>Constructor
-\<CR>Purpose:
-\<CR>/<UP><END>
-
-iab fileheader 
-\/*
-\<CR>Name: Vincent Yang
-\<CR>Login: cs12ehh
-\<CR>File:
-\<CR>Date: 
-"\<CR>Sources of Help: API, Discussion 
-\<CR>
-\<CR>Description: 
-\<CR>
-\<CR>/
-\<CR><UP><UP><UP><UP><UP><UP><UP><END>
-
-iab classheader 
-\<CR>/*
-\<CR>Name:
-\<CR>Purpose: 
-\<CR>/<UP><UP><END>
-
-iab testerclass 
-\public class Tester<CR>
-\{<CR>
-\public static void main(String[] args<RIGHT><CR>
-\{<CR>
-"colorscheme Zellner
 
 "Testing Tab keyboard controls
 "Movement between tabs OR buffers
