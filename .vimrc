@@ -270,7 +270,7 @@ endfunction
 vmap <TAB> >gv
 vmap <S-TAB> <gv
 
-imap <S-TAB> <ESC>hhhha
+imap <S-TAB> <ESC>hhhhh<TAB>i
 noremap <S-LEFT> hxhxhxhx
 noremap <S-RIGHT> i<SPACE><SPACE><SPACE><SPACE><ESC><RIGHT>
 
