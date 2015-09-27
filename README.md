@@ -11,3 +11,7 @@
 * vimrc
 * xvimrc
 * input.ini
+
+![dotfiles logo][logo]
+
+[logo]: https://github.com/YangVincent/dotfiles/blob/master/dotfiles-logo.png
