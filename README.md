@@ -1,6 +1,6 @@
 
 ####Files:
-* [bash_profile](../blob/master/.bash_profile)
+* [bash_profile](./master/.bash_profile)
   * This configures my bash command line
 * bashrc
 * gitignore_global
