@@ -31,8 +31,6 @@ set whichwrap +=<,h             "let l and h wrap around.
 " :filetype on                    "Set it to recognize filetype 
       "Currently unsure of functionality^ 
 
-" These change tabs to 2 space
-
 " switch tabs on for makefiles (won't work with spaces):
 au BufRead,BufNewfile Makefile set ts=4 sw=4 noexpandtab
 
@@ -43,7 +41,6 @@ imap ^{OC <ESC>li
 imap ^[OD <ESC>hi
 " Enable jk becomes escape for leaving insert mode
 imap jk <Esc>
-" imap ht <Esc>
 " Use l; to save and quit
 noremap l; :wq<CR>
 noremap ns :wq<CR>
@@ -56,18 +53,6 @@ noremap pa p0vf=y
 imap <C-w> <C-o><C-w>
 
 " Autoclose tags
-imap <p><SPACE> <p></p><ESC>hhhi
-imap <h1><SPACE> <h1></h1><ESC>hhhhi
-imap <h2><SPACE> <h2></h2><ESC>hhhhi
-imap <h3><SPACE> <h3></h3><ESC>hhhhi
-imap <h4><SPACE> <h4></h4><ESC>hhhhi
-imap <h5><SPACE> <h5></h5><ESC>hhhhi
-imap <h6><SPACE> <h6></h6><ESC>hhhhi
-imap <title><SPACE> <title></title><ESC>hhhhhhhi
-" multiline tags
-imap <body><SPACE> <body><CR></body><ESC>ka<CR><SPACE><SPACE>
-imap <html><SPACE> <html><CR></html><ESC>ka<CR><SPACE><SPACE>
-imap <head><SPACE> <head><CR></head><ESC>ka<CR><SPACE><SPACE>
 
 " Set open close brackets
 "imap {<CR> {<CR><CR>}<ESC>ki<tab>
@@ -97,30 +82,13 @@ set splitright
 " Shows colors of syntax
 syntax on                          
         
-" Autocomplete paranthesis stuff
-"inoremap ( ()<Esc>i
-"inoremap ()     ()
-"inoremap (      ()<Left>
-"inoremap (<CR>  (<CR>)<Esc>0
-
-"inoremap [  []<Esc>i
-"inoremap []     []
-"inoremap [      []<Left>
-"inoremap [<CR>  [<CR>]<Esc>0
-
-"imap {      {}<Left> 
-"imap {<CR>  {<CR>}<Esc>O
-"imap {}     {}
-
 " Smart indent
 set smartindent
 set tabstop=4
 set shiftwidth=4"originally 4
 set expandtab
 
-"theming
-"set background=dark
-"colorscheme solarized
+"Themes
 colorscheme zellner  
 
 " Line number highlight
@@ -140,10 +108,6 @@ highlight Visual  ctermfg=white
 " Highlight color of Matching paranthesis 
 highlight MatchParen cterm=underline ctermbg=none ctermfg=white
 
-"abbreviations
-" ab Sop System.out.println( <RIGHT><RIGHT>;<LEFT><LEFT><LEFT>
-" ab Sopl System.out.print(
-" ab Privates private static final
 ab FF /////////////////////////////////FIELDS/////////////////////////////////////
 ab MM /////////////////////////////////METHODS////////////////////////////////////
 ab CC //////////////////////////////CONSTRUCTORS//////////////////////////////////
