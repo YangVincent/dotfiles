@@ -1,4 +1,4 @@
-# dotfiles
+![dotfiles logo][logo]
 
 ####Files:
 * bash_profile
@@ -12,6 +12,5 @@
 * xvimrc
 * input.ini
 
-![dotfiles logo][logo]
 
 [logo]: https://github.com/YangVincent/dotfiles/blob/master/dotfiles-logo.png
