@@ -2,20 +2,20 @@
 ####Files:
 * [bash_profile](./.bash_profile)
   * This configures my bash command line
-* bashrc
-* gitignore_global
+* [bashrc](./.bashrc)
+* [gitignore_global](./.gitignore_global)
   * The gitignore file tells git which files to ignore (class files, etc)
   * gitignore_global applies to every git folder that does not have a gitignore.
-* ideavimrc
-* killwindow.sh
-* tmux.conf
+* [ideavimrc](./.ideavimrc)
+* [killwindow.sh](./.killwindow.sh)
+* [tmux.conf](./.tmux.conf)
   * Tmux is a window pane manager
   * This configures said manager
-* vimrc
+* [vimrc](./.vimrc)
   * The vimrc file defines behaviors and customizations for vi and vim
-* xvimrc
+* [xvimrc](./.xvimrc)
   * This is XVim, XCode's vim plugin's customization file
-* input.ini
+* [input.ini](./input.ini)
 
 ![dotfiles logo][logo]
 
