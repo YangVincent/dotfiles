@@ -23,3 +23,11 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 export PATH
 bind -m vi-insert '"jk":"\e"' 
 export HISTTIMEFORMAT="%d/%m/%y %T "
+
+export CLICOLOR=1;
+#Colors specified here: http://geoff.greer.fm/lscolors/
+export LSCOLORS=bxfxcxdxhxegedabagacad
+export GREP_OPTIONS='--color=auto'
+
+
+
