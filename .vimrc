@@ -102,7 +102,7 @@ highlight LineNr  ctermbg=black
 "highlight CursorLine   cterm=NONE ctermbg=black 
 
 " Highlight color of VISUAL mode
-highlight Visual  ctermbg=red
+highlight Visual  ctermbg=darkblue
 highlight Visual  ctermfg=white
   
 " Highlight color of Matching paranthesis 
