@@ -191,7 +191,7 @@ endfunction
 vmap <TAB> >gv
 vmap <S-TAB> <gv
 
-imap <S-TAB> <ESC>hhhhh<TAB>i
+imap <S-TAB> <BS><BS><BS><BS>
 noremap <S-LEFT> hxhxhxhx
 noremap <S-RIGHT> i<SPACE><SPACE><SPACE><SPACE><ESC><RIGHT>
 
@@ -200,3 +200,9 @@ set timeout timeoutlen=250 ttimeoutlen=100
 
 "Set relative numbers
 set rnu
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
