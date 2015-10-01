@@ -6,9 +6,7 @@
 * [gitignore_global](./.gitignore_global)
   * The gitignore file tells git which files to ignore (class files, etc)
   * gitignore_global applies to every git folder that does not have a gitignore.
-  * ```
-    git config --global core.excludesfile ~/.gitignore_global
-    ```
+  *     git config --global core.excludesfile ~/.gitignore_global
 * [ideavimrc](./.ideavimrc)
 * [killwindow.sh](./.killwindow.sh)
 * [tmux.conf](./.tmux.conf)
