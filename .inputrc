@@ -1,0 +1,25 @@
+# Use vi, not Emacs, style editing
+set editing-mode vi
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+
+# Ignore case
+set completion-ignore-case on
+
+# on menu-complete, first display the common prefix, then cycle through options
+# when pressing tab
+set keymap vi-command
+# Keymaps for when in insert mode
+set keymap vi-insert
+# Shift-TAB cycles completions backward
+# "\e]Z": menu-complete-backward
+"p": self-insert
+
+# Pressing tab lists all completions and selects the first one.
+# Pressing it again will cycle through all available completions.
+TAB: menu-complete
+set show-all-if-ambiguous on 
+# This is only in bash 4.3, I am not on this version.
+# set show-mode-in-prompt On
+#
+
