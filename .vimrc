@@ -22,17 +22,22 @@ set nohlsearch                  " meh
 set bs=2                        " fix backspacing in insert mode
 set cursorline                  " highlighs current line
 set formatoptions+=r            " auto add askerus for comments
-set expandtab
-set ts=4
-set shiftwidth=4
 set sm                          " show matching {()} or as typed.
 set whichwrap +=>,l
 set whichwrap +=<,h             "let l and h wrap around.
-" :filetype on                    "Set it to recognize filetype 
-      "Currently unsure of functionality^ 
+set rnu                         "Set relative numbers
+" Smart indent
+set smartindent
+set tabstop=4
+set shiftwidth=4                "originally 4
+set expandtab
 
-" switch tabs on for makefiles (won't work with spaces):
-au BufRead,BufNewfile Makefile set ts=4 sw=4 noexpandtab
+
+" Set splitirght
+set splitright
+
+" Shows colors of syntax
+syntax on                          
 
 " Enable arrow keys                    
 imap ^[OA <ESC>ki                                    
@@ -44,27 +49,16 @@ imap jk <Esc>
 " Use l; to save and quit
 noremap l; :wq<CR>
 noremap ns :wq<CR>
-";TEMPORARY FOR INTERNATIONALIZATION SHORTCUT FOR IDENTITYMIND
-noremap pq pxF"itr(<ESC>wf"a)<ESC>
-noremap pa p0vf=y
 
 "Allow all window commands in insert mode without accidentally
 "deleting words
 imap <C-w> <C-o><C-w>
-
-" Autoclose tags
-
-" Set open close brackets
-"imap {<CR> {<CR><CR>}<ESC>ki<tab>
-inoremap {<CR> {<CR>}<C-o>O
 
 "Easier split navigations - remap left and right, up and down
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-" nnoremap <C-S-Tab>   <C-W><C-H>
-" nnoremap <C-Tab>     <C-W><C-L>
 
 " Try insert mode
 inoremap <C-J> <Esc><C-W><C-J>i
@@ -72,34 +66,11 @@ inoremap <C-K> <Esc><C-W><C-K>i
 inoremap <C-L> <Esc><C-W><C-L>i
 inoremap <C-H> <Esc><C-W><C-H>i
 
-
-" Set splitirght
-set splitright
-
-"nmap :ba<CR> :b#<CR>
-
-
-" Shows colors of syntax
-syntax on                          
-        
-" Smart indent
-set smartindent
-set tabstop=4
-set shiftwidth=4"originally 4
-set expandtab
-
 "Themes
 colorscheme zellner  
 
 " Line number highlight
 highlight LineNr  ctermbg=black
-
-" Highlight overlenght of 80
-" highlight OverLength ctermbg=red ctermfg=white guibg=red 
-" match OverLength /\%81v.\+/
-
-" Highlight current line color
-"highlight CursorLine   cterm=NONE ctermbg=black 
 
 " Highlight color of VISUAL mode
 highlight Visual  ctermbg=darkblue
@@ -147,14 +118,6 @@ if version >= 700
   au InsertEnter * highlight Statusline cterm=bold ctermfg=black ctermbg=green
 endif
 
-" nnoremap <C-W-W> :command vert 2ball<CR>
-" nnoremap :vert 2ball<CR> <C-w-w>
-"Switch to alternate file
-" map <C-Tab> :bnext<cr>
-" map <C-S-Tab> :bprevious<cr>
-
-" set clipboard=unnamedplus
-
 highlight LineNr ctermfg=white
 
 " set colorcolumn=120
@@ -181,11 +144,6 @@ if indent != "":
         idx-=1
 EOF
 endfunction
-" replace the <C-D> in insert mode with the above function
-" imap <C-d> <C-o>:call DedentToPrevious()<CR>
-
-" To get more sane behaviour with auto-indent, use this instead:
-" imap <C-d> <Left><Right><C-o>:call DedentToPrevious()<CR>
 
 " Use visual mode to indent/unindent:
 vmap <TAB> >gv
@@ -198,11 +156,63 @@ noremap <S-RIGHT> i<SPACE><SPACE><SPACE><SPACE><ESC><RIGHT>
 "set shortcut delay time
 set timeout timeoutlen=250 ttimeoutlen=100
 
-"Set relative numbers
-set rnu
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+" switch tabs on for makefiles (won't work with spaces):
+au BufRead,BufNewfile Makefile set ts=4 sw=4 noexpandtab
+
+
+" Vundle plugin package manager
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+"alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"The following are examples of different formats supported.
+" Keep Plugin commands between bundle#begin/end.
+" Plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'scrooloose/syntastic'
+" let g:syntastic_cpp_check_header = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+highlight SyntasticErrorLine guibg=#2f0000
+hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
+hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
+
+
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/nerdcommenter'
+
+" let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
+let g:ycm_register_as_syntastic_checker = 0
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+
+
+" call vundle#rc()
+" more bundles here
+call vundle#end()
+filetype plugin indent on
+filetype on
+
+" End Vundle setup
+
+
+
