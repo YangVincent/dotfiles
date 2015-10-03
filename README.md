@@ -14,6 +14,13 @@
   * This configures said manager
 * [vimrc](./.vimrc)
   * The vimrc file defines behaviors and customizations for vi and vim
+  * Plugins:
+    * Vundle - Vim Plugin Manager
+    * vim-fugitive - Git Wrapper
+    * YouCompleteMe - Code Completion
+    * syntastic - syntax checker
+    * auto-pairs - Bracket/Parens/etc auto format and auto matcher
+    * nerdcommenter - Easy Commenting
 * [xvimrc](./.xvimrc)
   * This is XVim, XCode's vim plugin's customization file
 * [input.ini](./input.ini)
