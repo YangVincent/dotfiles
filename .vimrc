@@ -31,6 +31,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4                "originally 4
 set expandtab
+set softtabstop=4 expandtab
 
 
 " Set splitirght
@@ -84,20 +85,6 @@ ab MM /////////////////////////////////METHODS//////////////////////////////////
 ab CC //////////////////////////////CONSTRUCTORS//////////////////////////////////
 ab SG ///////////////////////////SETTERS & GETTERS////////////////////////////////
 
-
-"Testing Tab keyboard controls
-"Movement between tabs OR buffers
-"nnoremap <C-S-tab>  :tabprevious<CR>
-"nnoremap <C-S-tab>  :call MyPrev()<CR>
-"nnoremap <C-tab>    :tabnext<CR>
-"nnoremap <C-tab>    :call MyPrev()<CR>
-"nnoremap <C-t>      :tabnew<CR>
-"inoremap <C-S-tab>  <Esc>:tabprevious<CR>i
-"inoremap <C-tab>    <Esc>:tabnext<CR>i
-"inoremap <C-t>      <Esc>:tabnew<CR>
-
-
-
 " sets tab to fill wildchars for buffers
 set wildchar=<tab> wildmenu wildmode=full
 
@@ -145,11 +132,7 @@ if indent != "":
 EOF
 endfunction
 
-" Use visual mode to indent/unindent:
-vmap <TAB> >gv
-vmap <S-TAB> <gv
 
-imap <S-TAB> <BS><BS><BS><BS>
 noremap <S-LEFT> hxhxhxhx
 noremap <S-RIGHT> i<SPACE><SPACE><SPACE><SPACE><ESC><RIGHT>
 
@@ -199,6 +182,7 @@ hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scroloose/nerdtree'
 
 " let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
 let g:ycm_register_as_syntastic_checker = 0
@@ -214,5 +198,35 @@ filetype on
 
 " End Vundle setup
 
+" Mapleader
+let mapleader = ','
 
 
+" Use visual mode to indent/unindent:
+vmap <TAB> >gv
+vmap <S-TAB> <gv
+
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+
+
+nnoremap <S-TAB> <<
+inoremap <S-TAB> <C-d>
