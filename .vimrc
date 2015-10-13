@@ -163,14 +163,14 @@ Plugin 'VundleVim/Vundle.vim'
 "The following are examples of different formats supported.
 " Keep Plugin commands between bundle#begin/end.
 " Plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'Valloric/YouCompleteMe'
 
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 " let g:syntastic_cpp_check_header = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -182,7 +182,7 @@ hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scroloose/nerdtree'
+"Plugin 'scroloose/nerdtree'
 
 " let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
 let g:ycm_register_as_syntastic_checker = 0
