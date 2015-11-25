@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<root>
+    <devicevendordef>
+        <vendorname>APPLE_INC</vendorname>
+        <vendorid>0x05ac</vendorid>
+    </devicevendordef>
+
+    <devicevendordef>
+        <vendorname>APPLE_COMPUTER</vendorname>
+        <vendorid>0x05ac</vendorid>
+    </devicevendordef>
+
+    <devicevendordef>
+        <vendorname>Apple_Bluetooth</vendorname>
+        <vendorid>0x004c</vendorid>
+    </devicevendordef>
+
+    <devicevendordef>
+        <vendorname>TYPEMATRIX</vendorname>
+        <vendorid>0x1e54</vendorid>
+    </devicevendordef>
+
+    <devicevendordef>
+        <vendorname>Kinesis</vendorname>
+        <vendorid>0x05f3</vendorid>
+    </devicevendordef>
+
+    <deviceproductdef>
+        <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</productname>
+        <productid>0x0259</productid>
+    </deviceproductdef>
+
+    <deviceproductdef>
+        <productname>Advantage_MPC</productname>
+        <productid>0x0007</productid>
+    </deviceproductdef>
+
+
+
+
+    <item>
+        <name>Swap Command e to Command `</name>
+        <identifier>private.swap_command+e_to_command+`</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::E, ModifierFlag::COMMAND_L,
+            KeyCode::BACKQUOTE,   ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::BACKQUOTE,   ModifierFlag::COMMAND_L,
+            KeyCode::E, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+
+
+    <item>
+        <name>Swap Command e to Command ` Kinesis</name>
+        <identifier>private.swap_command+e_to_command+` Kinesis</identifier>
+        <device_only>DeviceVendor::Kinesis, DeviceProduct::Advantage_MPC</device_only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::E, ModifierFlag::COMMAND_R,
+            KeyCode::BACKQUOTE,   ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::BACKQUOTE,   ModifierFlag::COMMAND_R,
+            KeyCode::E, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+
+
+    <item>
+        <name>Rebind Run Command for XCode</name>
+        <identifier>private.rebind_run_for_xcode</identifier>
+        <!-- Swap Control R and Apple R for XCode to keep consistent -->
+        <only>XCODE</only>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <device_only>DeviceVendor::Kinesis, DeviceProduct::Advantage_MPC</device_only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::R, ModifierFlag::COMMAND_L,
+            KeyCode::R, ModifierFlag::CONTROL_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::R, ModifierFlag::CONTROL_L,
+            KeyCode::R, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
+
+    <item>
+        <name>Rebind Hide Command</name>
+        <identifier>RebindHideCommand</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <autogen>__KeyToKey__ 
+            KeyCode::H, ModifierFlag::COMMAND_L, 
+            KeyCode::G, ModifierFlag::COMMAND_L 
+        </autogen>
+    </item>
+
+
+    <item>
+        <name>Rebind Hide Command Kinesis</name>
+        <identifier>RebindHideCommandKinesis</identifier>
+        <device_only>DeviceVendor::Kinesis, DeviceProduct::Advantage_MPC</device_only>
+        <autogen>__KeyToKey__ 
+            KeyCode::H, ModifierFlag::COMMAND_R, 
+            KeyCode::G, ModifierFlag::COMMAND_L 
+        </autogen>
+    </item>
+
+    <item>
+        <name>Map backspace to CAPS</name>
+        <appendix>(Change backspace key to caps lock key in internal keyboard.)</appendix>
+        <identifier>MapBackspaceToCAPS</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::CAPSLOCK</autogen>
+    </item>
+
+    <item>
+        <name>Two keys in rapid succession toggles Normal Mode</name>
+        <identifier>remap.vimnormal_jthenk_toggle</identifier>
+        <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
+        <autogen>
+            __SimultaneousKeyPresses__
+            @begin
+            KeyCode::K, KeyCode::J
+            @end
+
+            @begin
+            KeyCode::K, KeyCode::J
+            @end
+            Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+        </autogen>
+    </item>
+</root>
