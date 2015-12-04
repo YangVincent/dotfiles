@@ -27,7 +27,7 @@ set whichwrap +=>,l
 set whichwrap +=<,h             "let l and h wrap around.
 set rnu                         "Set relative numbers
 " Smart indent
-set smartindent
+set cindent
 set tabstop=4
 set shiftwidth=4                "originally 4
 set expandtab

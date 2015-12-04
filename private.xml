@@ -119,6 +119,15 @@
         <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
         <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::CAPSLOCK</autogen>
     </item>
+    <item>
+        <name>Map right shift to CAPS</name>
+        <appendix>(Change right shift key to caps lock key in internal keyboard.)</appendix>
+        <identifier>MapRightShiftToCAPS</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
+    </item>
+
+
 
     <item>
         <name>Two keys in rapid succession toggles Normal Mode</name>
