@@ -6,6 +6,7 @@
 *.dll
 *.exe
 *.o
+*.out
 *.so
 
 # Packages #
@@ -21,6 +22,14 @@
 *.rar
 *.tar
 *.zip
+
+# Temp files #
+######################
+*.swp
+
+# IDE Project Files #
+######################
+*.xcodeproj
 
 # Logs and Databases #
 ######################
