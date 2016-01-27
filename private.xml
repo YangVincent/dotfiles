@@ -37,6 +37,21 @@
 
 
 
+    <item>
+        <name>Swap Apple L to Apple Enter</name>
+        <identifier>private.swap_apple+l_to_apple+enter</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0259</device_only>
+        <autogen>
+            __KeyToKey__
+            KeyCode::L, ModifierFlag::COMMAND_L,
+            KeyCode::RawValue::0x24,   ModifierFlag::COMMAND_L
+        </autogen>
+        <autogen>
+            __KeyToKey__
+            KeyCode::RawValue::0x24,   ModifierFlag::COMMAND_L,
+            KeyCode::L, ModifierFlag::COMMAND_L
+        </autogen>
+    </item>
 
     <item>
         <name>Swap Command e to Command `</name>
@@ -125,7 +140,8 @@
     <item>
         <name>Two keys in rapid succession toggles Normal Mode</name>
         <identifier>remap.vimnormal_jthenk_toggle</identifier>
-        <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
+        <!--<not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>-->
+        <not>{{VIM_EMU_IGNORE_APPS}}</not>
         <autogen>
             __SimultaneousKeyPresses__
             @begin
