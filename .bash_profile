@@ -1,3 +1,7 @@
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 
 #export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 #alias mq='/Users/vincentyang/Desktop/IdentityMind/MessageQueue/mq/bin/imqbrokerd -vmargs "-Xms128m -Xmx512m -Xss256k" -name identitymind&'
@@ -12,7 +16,19 @@ alias soph='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore'
 alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
+alias mat='ssh m22als3-27@point.math.ucdavis.edu'
+alias mgt='/usr/bin/open -a "/Applications/Safari.app" "http://connect.mheducation.com/connect/login/index.htm?&BRANDING_VARIANT_KEY=en_us_default_default&node=connect_app_17_251"'
+alias ant='/usr/bin/open -a "/Applications/Safari.app" "https://digital.wwnorton.com/howhumans7"'
+alias dsp='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore/Winter/DSP'
+alias sublime='open /Applications/Sublime\ Text\ 2.app/'
+alias now='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore/Winter/'
+alias dsp='cd ~/Dropbox/AeonNeo/UC\ Davis/DSP'
+alias :q='exit'
+alias proj='cd ~/Dropbox/AeonNeo/Projects/Materialize/MaterializeYiassuo/'
 
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
 
 
 

@@ -36,7 +36,15 @@
     </deviceproductdef>
 
 
-
+    <item>
+      <name>Map F19 to Ctrl + A</name>
+      <identifier>private.map+f19_to_ctrl+a</identifier>
+      <autogen>
+            __KeyToKey__
+            KeyCode::F19,
+            KeyCode::A, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
     <item>
         <name>Swap Apple L to Apple Enter</name>
         <identifier>private.swap_apple+l_to_apple+enter</identifier>
