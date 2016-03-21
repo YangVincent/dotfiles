@@ -25,10 +25,14 @@ alias now='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore/Winter/'
 alias dsp='cd ~/Dropbox/AeonNeo/UC\ Davis/DSP'
 alias :q='exit'
 alias proj='cd ~/Dropbox/AeonNeo/Projects/Materialize/MaterializeYiassuo/'
+alias tk='tmux kill-session -a'
+alias tls='tmux list-sessions'
+alias ta='tmux a'
+alias t='tmux attach -t default || tmux new -s default'
 
-if [[ ! $TERM =~ screen ]]; then
-    exec tmux
-fi
+#if [[ ! $TERM =~ screen ]]; then
+#    exec tmux attach || tmux new
+#fi
 
 
 

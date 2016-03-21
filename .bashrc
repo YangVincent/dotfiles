@@ -1,8 +1,7 @@
 # [[ $- = *i* ]] && bind TAB:menu-complete
 
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
 
+alias tmux="TERM=screen-256color-bce tmux"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
