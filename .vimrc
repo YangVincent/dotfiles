@@ -1,6 +1,8 @@
 " **************************************                                                                                                                                                                            
 " * VARIABLES
 " **************************************
+"
+set term=screen-256color
 set nocompatible               " get rid of strict vi compatibility!
 set nu                          " line numbering on
 set autoindent                  " autoindent on
@@ -54,6 +56,7 @@ noremap ns :wq<CR>
 "Allow all window commands in insert mode without accidentally
 "deleting words
 imap <C-w> <C-o><C-w>
+
 
 "Easier split navigations - remap left and right, up and down
 nnoremap <C-J> <C-W><C-J>
