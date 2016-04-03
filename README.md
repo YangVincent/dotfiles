@@ -12,6 +12,7 @@
 * [tmux.conf](./.tmux.conf)
   * Tmux is a window pane manager
   * This configures said manager
+  * Default key remapped to ctrl-a; couples with Karabiner to make caps key default prefix. 
 * [vimrc](./.vimrc)
   * The vimrc file defines behaviors and customizations for vi and vim
   * Plugins:
