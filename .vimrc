@@ -35,6 +35,7 @@ set shiftwidth=2                "originally 4
 set expandtab
 set softtabstop=2 expandtab
 
+set clipboard^=unnamed
 
 " Set splitirght
 set splitright
@@ -73,6 +74,8 @@ inoremap <C-H> <Esc><C-W><C-H>i
 "Themes
 colorscheme zellner  
 
+
+
 " Line number highlight
 highlight LineNr  ctermbg=black
 
@@ -83,10 +86,6 @@ highlight Visual  ctermfg=white
 " Highlight color of Matching paranthesis 
 highlight MatchParen cterm=underline ctermbg=none ctermfg=white
 
-ab FF /////////////////////////////////FIELDS/////////////////////////////////////
-ab MM /////////////////////////////////METHODS////////////////////////////////////
-ab CC //////////////////////////////CONSTRUCTORS//////////////////////////////////
-ab SG ///////////////////////////SETTERS & GETTERS////////////////////////////////
 
 " sets tab to fill wildchars for buffers
 set wildchar=<tab> wildmenu wildmode=full
@@ -109,6 +108,9 @@ if version >= 700
 endif
 
 highlight LineNr ctermfg=white
+
+" Remove background/foreground flipping by italic style
+highlight htmlItalic term=NONE cterm=NONE gui=NONE
 
 " set colorcolumn=120
 
@@ -179,8 +181,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 highlight SyntasticErrorLine guibg=#2f0000
-hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
-hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
+"hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
+"hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 
 
 Plugin 'jiangmiao/auto-pairs'
