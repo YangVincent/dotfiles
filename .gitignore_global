@@ -37,6 +37,10 @@
 *.sql
 *.sqlite
 
+# Java build artifacts class files #
+######################
+*.class
+
 # OS generated files #
 ######################
 .DS_Store
