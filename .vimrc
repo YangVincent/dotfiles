@@ -30,12 +30,14 @@ set whichwrap +=<,h             "let l and h wrap around.
 set rnu                         "Set relative numbers
 
 " Smart indent
-set cindent
+"set cindent
 set tabstop=4
 set shiftwidth=4                "originally 4
 set expandtab
-au! FileType python setl nosmartindent "turn off autoindent for python
-au! BufNewFile *.html :setl sw=2 sts=2 et
+set nosmartindent
+"au! FileType python setl nosmartindent "turn off autoindent for python
+"au! FileType html setl nosmartindent "turn off autoindent for python
+
 
 set clipboard^=unnamed
 
