@@ -1,0 +1,113 @@
+*RltvNmbr.txt*	Relative Numbers			Nov 21, 2008
+
+Author:  Charles E. Campbell, Jr.  <NdrOchip@ScampbellPfamily.AbizM>
+	  (remove NOSPAM from Campbell's email first)
+Copyright: (c) 2008 by Charles E. Campbell, Jr.		*RltvNmbr-copyright*
+           The VIM LICENSE applies to RltvNmbr.vim and RltvNmbr.txt
+           (see |copyright|) except use "RltvNmbr instead of "Vim".
+	   NO WARRANTY, EXPRESS OR IMPLIED.  USE AT-YOUR-OWN-RISK.
+
+==============================================================================
+1. Contents				*RltvNmbr* *RltvNmbr-contents* {{{1
+
+	1. Contents......................................: |RltvNmbr-contents|
+	2. Relative Numbering Manual.....................: |RltvNmbr-manual|
+	3. Relative Numbering History....................: |RltvNmbr-history|
+
+==============================================================================
+2. Relative Numbering Manual				*RltvNmbr-manual* {{{1
+
+ENABLING AND DISABLING RELATIVE NUMBERING
+    The Relative Numbering plugin provides a command: >
+	:RltvNmbr[!]
+<   The :RltvNmbr command enables relative numbering.
+    The :RltvNmbr! command disables relative numbering.
+
+    If :RN hasn't been previously defined, then one may also use >
+	:RN
+<   to toggle relative numbering.
+
+    The RltvNumbr plugin reports on its enabled/disabled status with >
+    	b:rltvnmbrmode=1 : RltvNmbr mode is enabled
+    	b:rltvnmbrmode=0 : RltvNmbr mode is disabled
+<    This variable is used for reporting and to control :RN based toggling.
+
+YOU MUST HAVE SIGNS FOR THIS PLUGIN
+    To use this plugin your vim must have been compiled with the "huge" feature
+    set (so as to have +signs in the :version listing).  Typically that means
+    having used >
+	configure --with-features=huge
+<
+    To determine if your copy of vim has signs, you may: >
+    	:echo has("signs")
+<   If it shows "1", then your vim supports signs.
+
+    Alternatively, you may: >
+	:version
+<   and if +signs appears in the listing, then, again, your vim supports
+    signs.  If it lists -signs, then unfortunately your vim does not do so.
+
+MODFIYING THE RELATIVE NUMBERING HIGHLIGHTING
+    The relative numbering signs are highlighted with >
+
+	hi default HL_RltvNmbr_Minus    gui=none,italic ctermfg=red   ctermbg=black guifg=red   guibg=black
+	hi default HL_RltvNmbr_Positive	gui=none,italic ctermfg=green ctermbg=black guifg=green guibg=black
+
+<   This information is provided so that you may know what to specify to use
+    your preferences in relative number highlighting.  One way to get your
+    preferred colorization in is to put lines like the following into
+    .vim/after/plugin/RltvNmbr.vim: >
+
+	au FileType * hi HL_RltvNmbr_Minus    gui=none ctermfg=yellow  ctermbg=black guifg=yellow  guibg=black
+	au FileType * hi HL_RltvNmbr_Positive gui=none ctermfg=magenta ctermbg=black guifg=magenta guibg=black
+<
+
+HOW TO START WITH RELATIVE NUMBERING MODE ENABLED
+   Using >
+   	Unix: ~/.vim/after/plugin/RltvNmbr.vim
+	Windows: $HOME\_vimfiles\after\plugin\RltvNmbr.vim
+<  place the following line: >
+	call RltvNmbr#RltvNmbrCtrl(1)
+<
+THE RELATIVE NUMBERING PATCH
+    This plugin was inspired by the relative-numbering patch mentioned on the
+    vim-dev mailing list, written by Markus Heidelberg.  You can find his patch at
+
+http://groups.google.com/group/vim_dev/attach/10fa0944a8b643b4/vim-7.2-relativenumber-02.patch?part=2
+
+    This plugin uses signs to enable relative numbering.  Signs are assigned
+    on a buffer-by-buffer basis as an inherent limitation, so a given buffer
+    can only display one set of signs.  The relative numbering patch does not
+    have this limitation.  To see this effect, try using >
+    	vim -O file file
+<   and use relative numbering provided by this plugin.  You'll find that the
+    relative numbering column will change as you switch windows to reflect
+    your active cursor.
+
+
+==============================================================================
+3. Relative Numbering History				*RltvNmbr-history* {{{1
+	3: Aug 22, 2008		* speeded up unplacing of signs
+				* included g:rltvnmbrmode to report en/dis-abled
+				* s:AvoidOtherSigns() written/included to
+				* allow RltvNmbr() to avoid using previously
+				  existing sign IDs.
+				* included some more autocmds for rltv nmbr
+				  updating
+   	2: Aug 19, 2008		* included :RN command which toggles
+	   			  relative numbering
+				* included some more autocmds to update
+				  relative numbering.
+				* made gvim's version use italic numbers
+				* :RN was toggling globally; now its done
+				  on a buffer-by-buffer basis.
+				* Included DrChip menu support for gvim use
+	1: Aug 18, 2008		* Initial release
+	   Aug 18, 2008		* Fixed some bugs associated with folding
+	   Aug 18, 2008		* Changes in colorscheme was clearing the
+	   			  highlighting.  Highlighting now restored.
+
+==============================================================================
+Modelines: {{{1
+vim:tw=78:ts=8:ft=help:fdm=marker:
+
