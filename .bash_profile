@@ -1,13 +1,50 @@
+txtblk='\e[0;30m' # Black - Regular
+txtred='\e[0;31m' # Red
+txtgrn='\e[0;32m' # Green
+txtylw='\e[0;33m' # Yellow
+txtblu='\e[0;34m' # Blue
+txtpur='\e[0;35m' # Purple
+txtcyn='\e[0;36m' # Cyan
+txtwht='\e[0;37m' # White
+bldblk='\e[1;30m' # Black - Bold
+bldred='\e[1;31m' # Red
+bldgrn='\e[1;32m' # Green
+bldylw='\e[1;33m' # Yellow
+bldblu='\e[1;34m' # Blue
+bldpur='\e[1;35m' # Purple
+bldcyn='\e[1;36m' # Cyan
+bldwht='\e[1;37m' # White
+unkblk='\e[4;30m' # Black - Underline
+undred='\e[4;31m' # Red
+undgrn='\e[4;32m' # Green
+undylw='\e[4;33m' # Yellow
+undblu='\e[4;34m' # Blue
+undpur='\e[4;35m' # Purple
+undcyn='\e[4;36m' # Cyan
+undwht='\e[4;37m' # White
+bakblk='\e[40m'   # Black - Background
+bakred='\e[41m'   # Red
+badgrn='\e[42m'   # Green
+bakylw='\e[43m'   # Yellow
+bakblu='\e[44m'   # Blue
+bakpur='\e[45m'   # Purple
+bakcyn='\e[46m'   # Cyan
+bakwht='\e[47m'   # White
+txtrst='\e[0m'    # Text Reset - Useful for avoiding color bleed
+
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
-export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+#export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export PS1="\[$undpur\][\W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\[$bldblu\] >> \[$txtrst\]"
+#export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 
+# ALIASES #
+###########
 #export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 #alias mq='/Users/vincentyang/Desktop/IdentityMind/MessageQueue/mq/bin/imqbrokerd -vmargs "-Xms128m -Xmx512m -Xss256k" -name identitymind&'
 #alias redis='/Users/vincentyang/Desktop/IdentityMind/Redis/redis-3.0.2/src/redis-server'
-alias mysql='mysql.server start'
-alias mysqle='mysql.server stop'
+#alias mysql='mysql.server start'
+#alias mysqle='mysql.server stop'
 alias aeonneo='cd ~/Dropbox/AeonNeo/'
 alias davis='cd ~/Dropbox/AeonNeo/UC\ Davis/'
 alias soph='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore'
@@ -16,10 +53,11 @@ alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
 alias mgt='/usr/bin/open -a "/Applications/Safari.app" "http://connect.mheducation.com/connect/login/index.htm?&BRANDING_VARIANT_KEY=en_us_default_default&node=connect_app_17_251"'
 alias ant='/usr/bin/open -a "/Applications/Safari.app" "https://digital.wwnorton.com/howhumans7"'
-alias dsp='cd ~/Dropbox/AeonNeo/UC\-Davis/Sophomore/Winter/DSP'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
-alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Sophomore/Spring/'
+alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Fall'
 alias dsp='cd ~/Dropbox/AeonNeo/UC\-Davis/DSP'
+alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
+alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
 alias proj='cd ~/Dropbox/AeonNeo/Projects/'
 alias bish='cd ~/Dropbox/AeonNeo/Projects/Integrated-Security-Simulation/'
@@ -34,7 +72,10 @@ alias ..='cd ../..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
 alias ga='git add .'
-alias vi="vim -S ~/.vimrc"
+#alias vi="vim -S ~/.vimrc"
+alias matlab="/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop"
+alias hd="cd ~/Dropbox/AeonNeo/UC-Davis/HackDavis/"
+alias grad="cd ~/Dropbox/AeonNeo/UC-Davis/Grad"
 
 
 c() {
@@ -46,8 +87,6 @@ c() {
     ls
   fi
 }
-
-
 
 # Setting PATH for Python 3.4
 # # The orginal version is saved in .bash_profile.pysave
@@ -117,3 +156,26 @@ alias todos="ack -n --nogroup '(TODO|FIX(ME)?):'"
 
 # interactive fasd
 alias zi="fasd -e cd -i"
+
+#   extract:  Extract most know archives with one command
+#   ---------------------------------------------------------
+extract () {
+    if [ -f $1 ] ; then
+      case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       unrar e $1     ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1        ;;
+        *)     echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
