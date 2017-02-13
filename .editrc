@@ -1,0 +1,6 @@
+# This file dictates how text editing works in programs like MySQL
+
+# vim mode
+bind -v
+# tab complete
+bind \\t rl_complete
