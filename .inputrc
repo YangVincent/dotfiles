@@ -1,7 +1,7 @@
+set bell-style none
+
 # Use vi, not Emacs, style editing
 set editing-mode vi
-# Show all completions as soon as I press tab, even if there's more than one
-set show-all-if-ambiguous on
 
 # Ignore case
 set completion-ignore-case on
@@ -9,17 +9,29 @@ set completion-ignore-case on
 # on menu-complete, first display the common prefix, then cycle through options
 # when pressing tab
 set keymap vi-command
+"gg": beginning-of-history
+"G": end-of-history
 # Keymaps for when in insert mode
 set keymap vi-insert
+"\C-w": backward-kill-word
+"\C-p": history-search-backward
+
 # Shift-TAB cycles completions backward
-# "\e]Z": menu-complete-backward
-"p": self-insert
+#"\e]Z": menu-complete-backward - doesn't work; shift+tab sends esc
+#"\e[Z": "\e-1\C-i"
+"jk": vi-movement-mode     
 
 # Pressing tab lists all completions and selects the first one.
 # Pressing it again will cycle through all available completions.
 TAB: menu-complete
-set show-all-if-ambiguous on 
-# This is only in bash 4.3, I am not on this version.
-# set show-mode-in-prompt On
-#
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
 
+# This is only in bash 4.4
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[34;1m\2(ins)\1\e[0m\2
+set vi-cmd-mode-string \1\e[35;1m\2(cmd)\1\e[0m\2
+
+# incremental search with arrow keys
+"\e[A": history-search-backward
+"\e[B": history-search-forward

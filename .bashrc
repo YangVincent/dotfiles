@@ -1,6 +1,5 @@
 # [[ $- = *i* ]] && bind TAB:menu-complete
 
-
 alias tmux="TERM=screen-256color-bce tmux"
 
 ### Added by the Heroku Toolbelt
@@ -14,4 +13,10 @@ function _update_ps1() {
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
-
+if [[ '' = "$TMUX" ]]
+then
+    export INPUTRC=~/.inputrc
+else
+    export INPUTRC=~/.tmux.inputrc
+    echo Welcome to Tmux!
+fi

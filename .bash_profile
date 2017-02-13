@@ -32,11 +32,13 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset - Useful for avoiding color bleed
 
+# Initialize autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
-#export PS1="\u@\h \W \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 export PS1="\[$undpur\][\W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\[$bldblu\] >> \[$txtrst\]"
-#export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
 
 # ALIASES #
 ###########
@@ -54,8 +56,7 @@ alias projects='cd ~/Dropbox/AeonNeo/Projects'
 alias mgt='/usr/bin/open -a "/Applications/Safari.app" "http://connect.mheducation.com/connect/login/index.htm?&BRANDING_VARIANT_KEY=en_us_default_default&node=connect_app_17_251"'
 alias ant='/usr/bin/open -a "/Applications/Safari.app" "https://digital.wwnorton.com/howhumans7"'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
-alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Fall'
-alias dsp='cd ~/Dropbox/AeonNeo/UC\-Davis/DSP'
+alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Winter'
 alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
 alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
@@ -66,7 +67,6 @@ alias tls='tmux list-sessions'
 alias ta='tmux a'
 alias t='tmux attach -t default || tmux new -s default'
 alias wd='pwd'
-alias e='ssh 45.55.29.158 -l aeonneo'
 alias .='cd ..'
 alias ..='cd ../..'
 alias ...='cd ../../..'
@@ -76,6 +76,9 @@ alias ga='git add .'
 alias matlab="/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop"
 alias hd="cd ~/Dropbox/AeonNeo/UC-Davis/HackDavis/"
 alias grad="cd ~/Dropbox/AeonNeo/UC-Davis/Grad"
+alias digitalo="ssh leaf@162.243.144.114"
+alias matloff="cd ~/Dropbox/AeonNeo/UC-Davis/freqparcoord-extension"
+alias rs="rscript"
 
 
 c() {
@@ -92,7 +95,6 @@ c() {
 # # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 export PATH
-bind -m vi-insert '"jk":"\e"' 
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
 export CLICOLOR=1;
