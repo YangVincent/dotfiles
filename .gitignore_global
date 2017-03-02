@@ -150,3 +150,18 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### TeX ###
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+
+## Intermediate documents:
+*.dvi
+*-converted-to.*
+
