@@ -27,7 +27,7 @@ let mapleader = "\<Space>"
 " * Leader shortcuts
 " **************************************
 " Fast saving
-noremap <leader>w :w!<cr>
+noremap <leader>w :w<cr>
 
 " Let '<leader>b' toggle between this and the last accessed buffer
 noremap <leader>l :b#<cr>
@@ -40,6 +40,10 @@ noremap <leader>p :setlocal paste!<cr>
 
 " Turn off highlighting until next search
 noremap <leader>/ :noh<cr>
+
+" Rotate buffers
+noremap <leader>j :bn<cr>
+noremap <leader>k :bp<cr>
 
 " Vertical and horizontal splitting
 noremap <leader>v :vs<cr>
@@ -75,14 +79,13 @@ set hlsearch                    " highlight searches (can be turned off with <le
 set bs=2                        " fix backspacing in insert mode
 set cursorline                  " highlights current line
 set formatoptions+=r            " auto add askerus for comments
-set whichwrap +=>,l
-set whichwrap +=<,h             " let l and h wrap around.
 set rnu                         " Set relative numbers
 set clipboard^=unnamed          " Use system copy/paste keyboard for yank and delete
 set colorcolumn=120             " Mark the 120th column
 set confirm                     " Prompt if unsaved changes in buffer
 set splitbelow                  " More natural file splitting
 set splitright
+
 
 " vertical/horizontal scroll settings
 set scrolloff=3                 " keep this many lines between cursor and top/bottom when scrolling
@@ -105,6 +108,7 @@ syntax on
 " **************************************
 " * Intelligent Indenting
 " **************************************
+set softtabstop=4               " backspace will backspace a tab if possible
 set tabstop=4                   " Smart indenting
 set shiftwidth=4                " 1 tab == 4 spaces
 set expandtab                   " Use spaces instead of tabs
@@ -113,8 +117,6 @@ set nosmartindent
 " switch tabs on for makefiles (they won't work with spaces):
 au BufRead,BufNewfile Makefile set ts=4 sw=4 noexpandtab
 " **************************************
-
-
 
 " **************************************
 " * COLOR HIGHLIGHTING 
@@ -232,6 +234,8 @@ Plugin 'VundleVim/Vundle.vim'
 "hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 
 Plugin 'jiangmiao/auto-pairs'
+" Don't jump to close bracket on different line
+let g:AutoPairsMultilineClose = 0
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scroloose/nerdtree'
 
@@ -267,4 +271,10 @@ filetype on
 " * COMMANDS THAT MUST COME AFTER VUNDLE
 " **************************************
 set showcmd                     " show commands
+" On markdown files, where indentLine doesn't apply anyway, set conceallevel
+" to 0 to show asterisks and special characters
+autocmd BufNewFile,BufRead *.md let g:indentLine_setConceal = 0
+
+set whichwrap +=>,l
+set whichwrap +=<,h             " let l and h wrap around.
 " **************************************
