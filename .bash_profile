@@ -1,3 +1,5 @@
+#source ~/.profile
+
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
@@ -39,6 +41,8 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 export PS1="\[$undpur\][\W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\[$bldblu\] >> \[$txtrst\]"
 
+# Ignore repeated duplicate consecutive commands in history
+export HISTCONTROL=ignoredups
 
 # ALIASES #
 ###########
@@ -53,8 +57,6 @@ alias soph='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore'
 alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
-alias mgt='/usr/bin/open -a "/Applications/Safari.app" "http://connect.mheducation.com/connect/login/index.htm?&BRANDING_VARIANT_KEY=en_us_default_default&node=connect_app_17_251"'
-alias ant='/usr/bin/open -a "/Applications/Safari.app" "https://digital.wwnorton.com/howhumans7"'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
 alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Winter'
 alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
@@ -62,10 +64,11 @@ alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
 alias proj='cd ~/Dropbox/AeonNeo/Projects/'
 alias bish='cd ~/Dropbox/AeonNeo/Projects/Integrated-Security-Simulation/'
-alias tk='tmux kill-session -a'
+alias tk='tmux kill-session -t'
 alias tls='tmux list-sessions'
-alias ta='tmux a'
+alias ta='tmux a -t'
 alias t='tmux attach -t default || tmux new -s default'
+alias tn='tmux new -s'
 alias wd='pwd'
 alias .='cd ..'
 alias ..='cd ../..'
@@ -79,7 +82,10 @@ alias grad="cd ~/Dropbox/AeonNeo/UC-Davis/Grad"
 alias digitalo="ssh leaf@162.243.144.114"
 alias matloff="cd ~/Dropbox/AeonNeo/UC-Davis/freqparcoord-extension"
 alias rs="rscript"
-
+alias p3="python3"
+alias lisps="sbcl --script"
+alias lisp="sbcl"
+alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
 
 c() {
   if [ $# -eq 0 ]
@@ -150,9 +156,6 @@ alias stfu="osascript -e 'set volume output muted true'"
 # time machine log
 alias tmlog="syslog -F '\$Time \$Message' -k Sender com.apple.backupd-auto -k Time ge -30m | tail -n 1"
 
-# trim newlines
-alias tn='tr -d "\n"'
-
 # list TODO/FIX lines from the current project
 alias todos="ack -n --nogroup '(TODO|FIX(ME)?):'"
 
@@ -181,3 +184,7 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
