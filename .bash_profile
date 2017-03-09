@@ -51,9 +51,9 @@ export HISTCONTROL=ignoredups
 #alias redis='/Users/vincentyang/Desktop/IdentityMind/Redis/redis-3.0.2/src/redis-server'
 #alias mysql='mysql.server start'
 #alias mysqle='mysql.server stop'
+alias reload='unalias -a && source ~/.bash_profile'
 alias aeonneo='cd ~/Dropbox/AeonNeo/'
 alias davis='cd ~/Dropbox/AeonNeo/UC\ Davis/'
-alias soph='cd ~/Dropbox/AeonNeo/UC\ Davis/Sophomore'
 alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
@@ -64,11 +64,6 @@ alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
 alias proj='cd ~/Dropbox/AeonNeo/Projects/'
 alias bish='cd ~/Dropbox/AeonNeo/Projects/Integrated-Security-Simulation/'
-alias tk='tmux kill-session -t'
-alias tls='tmux list-sessions'
-alias ta='tmux a -t'
-alias t='tmux attach -t default || tmux new -s default'
-alias tn='tmux new -s'
 alias wd='pwd'
 alias .='cd ..'
 alias ..='cd ../..'
@@ -87,14 +82,54 @@ alias lisps="sbcl --script"
 alias lisp="sbcl"
 alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
 
+alias tls='tmux list-sessions'
+alias ta='tmux a -t'
+alias tn='tmux new -s'
+
+t() {
+    if [ $# -eq 0 ]
+    then
+        tmux attach -t default || tmux new -s default
+    elif [ "$1" = "r" ]
+    then
+        tmux attach -t research || tmux new -s research
+    elif [ "$1" = "w" ]
+    then
+        tmux attach -t work || tmux new -s work
+    elif [ "$1" = "c" ]
+    then
+        tmux attach -t club || tmux new -s club
+    else
+        tmux attach -t "$1" || tmux new -s "$1"
+    fi
+}
+
+tk() {
+    if [ "$1" = "d" ]
+    then
+        tmux kill-session -t default
+    elif [ "$1" = "r" ]
+    then
+        tmux kill-session -t research
+    elif [ "$1" = "w" ]
+    then
+        tmux kill-session -t work
+    elif [ "$1" = "c" ]
+    then
+        tmux kill-session -t club
+    else
+        echo Nothing to kill!
+    fi
+}
+
 c() {
-  if [ $# -eq 0 ]
-  then 
-    ls
-  else
-    cd "$1"
-    ls
-  fi
+    if [ $# -eq 0 ]
+    then 
+        ls
+    else
+        cd "$1"
+        ls
+    fi
 }
 
 # Setting PATH for Python 3.4
@@ -138,7 +173,7 @@ alias ip="curl icanhazip.com"
 # ls better
 alias la="ls -aF"
 alias ld="ls -ld"
-alias ll="ls -l"
+alias ll="ls -lh"
 alias lt='ls -At1 && echo "------Oldest--"'
 alias ltr='ls -Art1 && echo "------Newest--"'
 
@@ -160,29 +195,29 @@ alias tmlog="syslog -F '\$Time \$Message' -k Sender com.apple.backupd-auto -k Ti
 alias todos="ack -n --nogroup '(TODO|FIX(ME)?):'"
 
 # interactive fasd
-alias zi="fasd -e cd -i"
+#alias zi="fasd -e cd -i"
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
 extract () {
     if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1     ;;
-        *.tar.gz)    tar xzf $1     ;;
-        *.bz2)       bunzip2 $1     ;;
-        *.rar)       unrar e $1     ;;
-        *.gz)        gunzip $1      ;;
-        *.tar)       tar xf $1      ;;
-        *.tbz2)      tar xjf $1     ;;
-        *.tgz)       tar xzf $1     ;;
-        *.zip)       unzip $1       ;;
-        *.Z)         uncompress $1  ;;
-        *.7z)        7z x $1        ;;
-        *)     echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
