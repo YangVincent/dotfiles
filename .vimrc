@@ -49,6 +49,9 @@ noremap <leader>k :bp<cr>
 noremap <leader>v :vs<cr>
 noremap <leader>h :sp<cr>
 
+" Toggle fold
+noremap <leader>f za
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " **************************************
@@ -104,6 +107,21 @@ nnoremap <C-H> <C-W><C-H>
 
 " Show syntax colors
 syntax on                          
+
+" **************************************
+" * Folding
+set foldnestmax=2              " only fold up to method headers
+set foldlevel=2
+set foldmethod=syntax
+set nofoldenable                " don't fold on file open
+
+
+" persistent save folds 
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+"set foldmarker={,}
+" **************************************
 
 " **************************************
 " * Intelligent Indenting
