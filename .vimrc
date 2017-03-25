@@ -25,6 +25,7 @@ let g:AutoPairsMultilineClose = 0
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scroloose/nerdtree'
 
+Plugin 'Valloric/YouCompleteMe'
 " let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
 "let g:ycm_register_as_syntastic_checker = 0
 " plugin from http://vim-scripts.org/vim/scripts.html
