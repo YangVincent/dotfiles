@@ -1,4 +1,101 @@
 " **************************************                                                                                                                                                                            
+" * Vundle plugin package manager 
+" **************************************                                                                                                                                                                            
+
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+"alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/.vim/bundle')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"The following are examples of different formats supported.
+" Keep Plugin commands between bundle#begin/end.
+" Plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'Valloric/YouCompleteMe'
+
+
+Plugin 'jiangmiao/auto-pairs'
+" Don't jump to close bracket on different line
+let g:AutoPairsMultilineClose = 0
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scroloose/nerdtree'
+
+" let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
+"let g:ycm_register_as_syntastic_checker = 0
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+
+" Plugin indentLine - show matching indents
+Plugin 'Yggdroot/indentLine'
+"let g:indentLine_color_term = 8
+"let g:indentLine_char = '»'
+let g:indentLine_char = '|'
+"let g:indentLine_leadingSpaceChar = '·'
+"let g:indentLine_leadingSpaceChar = ' '
+"let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_faster = 1
+let g:tex_conceal = ""
+" end indentLine
+
+
+" Plugin vim-css-color
+Plugin 'ap/vim-css-color'
+
+
+" Plugin ConqueTerm
+"Plugin 'oplatek/Conque-Shell'
+set shell=/bin/sh
+" Conque GDB is installed; built from source because it doesn't work with Vundle
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
+let g:ConqueGdb_Leader = ','
+
+
+Plugin 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_cpp_check_header = 1
+"highlight SyntasticErrorLine ctermbg=160 " change the color of error line
+"hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
+"hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
+" change color of (gutter) Sign Column from gray to no color
+highlight SignColumn ctermbg=none 
+
+" Vimproc - async vim; needed for vdebugger
+"Plugin 'Shougo/vimproc.vim'
+" Vim debugger
+"Plugin 'idanarye/vim-vebugger' 
+
+" Dark mode Unite - fuzzy search through files/contents
+"Plugin 'Shougo/denite.nvim'
+"nnoremap <C-P>    :Denite -buffer-name=files -start-insert file_rec/async:!<cr>
+"nnoremap <space>/ :Denite -no-empty -no-resize grep<cr>
+"nnoremap <space>s :Denite -quick-match buffer<cr>
+
+"call vundle#rc()
+
+" more bundles here
+call vundle#end()
+
+" **************************************
+
+" **************************************
+" * COMMANDS THAT MUST COME AFTER VUNDLE
+" **************************************
+
+" **************************************                                                                                                                                                                            
 " * VARIABLES
 " **************************************
 
@@ -217,90 +314,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 endif
 " **************************************                                                                                                                                                                            
 
-
-" **************************************                                                                                                                                                                            
-" * Vundle plugin package manager 
-" **************************************                                                                                                                                                                            
-
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-"alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/.vim/bundle')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-"The following are examples of different formats supported.
-" Keep Plugin commands between bundle#begin/end.
-" Plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'Valloric/YouCompleteMe'
-
-
-Plugin 'jiangmiao/auto-pairs'
-" Don't jump to close bracket on different line
-let g:AutoPairsMultilineClose = 0
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scroloose/nerdtree'
-
-" let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
-"let g:ycm_register_as_syntastic_checker = 0
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-
-" Plugin indentLine - show matching indents
-Plugin 'Yggdroot/indentLine'
-"let g:indentLine_color_term = 8
-"let g:indentLine_char = '»'
-let g:indentLine_char = '|'
-"let g:indentLine_leadingSpaceChar = '·'
-"let g:indentLine_leadingSpaceChar = ' '
-"let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_faster = 1
-let g:tex_conceal = ""
-" end indentLine
-
-
-" Plugin vim-css-color
-Plugin 'ap/vim-css-color'
-
-
-" Plugin ConqueTerm
-Plugin 'oplatek/Conque-Shell'
-set shell=/bin/sh
-" Conque GDB is installed; built from source because it doesn't work with Vundle
-let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
-let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
-
-Plugin 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_cpp_check_header = 1
-"highlight SyntasticErrorLine ctermbg=160 " change the color of error line
-"hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
-"hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
-" change color of (gutter) Sign Column from gray to no color
-highlight SignColumn ctermbg=none 
-
-"call vundle#rc()
-
-" more bundles here
-call vundle#end()
-
-" **************************************
-
-" **************************************
-" * COMMANDS THAT MUST COME AFTER VUNDLE
-" **************************************
 
 set showcmd                     " show commands
 
