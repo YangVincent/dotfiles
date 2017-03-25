@@ -238,18 +238,6 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'Valloric/YouCompleteMe'
 
-"Plugin 'scrooloose/syntastic'
-" let g:syntastic_cpp_check_header = 1
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"highlight SyntasticErrorLine guibg=#2f0000
-"hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
-"hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 
 Plugin 'jiangmiao/auto-pairs'
 " Don't jump to close bracket on different line
@@ -272,27 +260,57 @@ let g:indentLine_char = '|'
 "let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_faster = 1
 let g:tex_conceal = ""
+" end indentLine
+
+
+" Plugin vim-css-color
+Plugin 'ap/vim-css-color'
+
+
+" Plugin ConqueTerm
+Plugin 'oplatek/Conque-Shell'
+set shell=/bin/sh
+" Conque GDB is installed; built from source because it doesn't work with Vundle
+let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
+
+Plugin 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_cpp_check_header = 1
+"highlight SyntasticErrorLine ctermbg=160 " change the color of error line
+"hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
+"hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
+" change color of (gutter) Sign Column from gray to no color
+highlight SignColumn ctermbg=none 
 
 "call vundle#rc()
 
 " more bundles here
 call vundle#end()
 
-" load ftplugins and indent files
-
-filetype plugin indent on
-filetype on
-
 " **************************************
 
 " **************************************
 " * COMMANDS THAT MUST COME AFTER VUNDLE
 " **************************************
+
 set showcmd                     " show commands
+
 " On markdown files, where indentLine doesn't apply anyway, set conceallevel
 " to 0 to show asterisks and special characters
 autocmd BufNewFile,BufRead *.md let g:indentLine_setConceal = 0
 
 set whichwrap +=>,l
 set whichwrap +=<,h             " let l and h wrap around.
+
+" load ftplugins and indent files
+filetype plugin indent on
 " **************************************
