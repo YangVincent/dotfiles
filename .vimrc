@@ -25,12 +25,6 @@ let g:AutoPairsMultilineClose = 0
 "Plugin 'scrooloose/nerdcommenter'
 "Plugin 'scroloose/nerdtree'
 
-Plugin 'Valloric/YouCompleteMe'
-" let g:ycm_global_ycm_extra_conf = 'path to .ycm_extra_conf.py'
-"let g:ycm_register_as_syntastic_checker = 0
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-
 " Plugin indentLine - show matching indents
 Plugin 'Yggdroot/indentLine'
 "let g:indentLine_color_term = 8
@@ -62,17 +56,27 @@ Plugin 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+" Syntastic is auto-disabled by YCM
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" let g:syntastic_cpp_check_header = 1
 "highlight SyntasticErrorLine ctermbg=160 " change the color of error line
 "hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
 "hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 " change color of (gutter) Sign Column from gray to no color
 highlight SignColumn ctermbg=none 
+
+Plugin 'Valloric/YouCompleteMe'
+" Close complete buffer after choosing option
+autocmd CompleteDone * pclose
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_register_as_syntastic_checker = 0
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
+highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
+
 
 " Vimproc - async vim; needed for vdebugger
 "Plugin 'Shougo/vimproc.vim'
@@ -152,6 +156,10 @@ noremap <leader>f za
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+"
+nnoremap <leader>g :YcmCompleter GoTo<cr>
+
 " **************************************
 
 " **************************************
@@ -215,8 +223,8 @@ set nofoldenable                " don't fold on file open
 
 
 " persistent save folds 
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave ?* mkview
+au BufWinEnter ?* silent loadview
 
 "set foldmarker={,}
 " **************************************
@@ -259,6 +267,12 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 " DiffText - exact part of the line that changed
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
+highlight SignColumn ctermbg=none 
+
+" YCM Highlighting
+highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
+highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
 
 " **************************************
 " * Format statusline
