@@ -1,32 +1,18 @@
 " **************************************                                                                                                                                                                            
-" * Vundle plugin package manager 
+" * Plug plugin package manager 
 " **************************************                                                                                                                                                                            
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-"alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/.vim/bundle')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-"The following are examples of different formats supported.
-" Keep Plugin commands between bundle#begin/end.
-" Plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'Valloric/YouCompleteMe'
-
-
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " Don't jump to close bracket on different line
 let g:AutoPairsMultilineClose = 0
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'scroloose/nerdtree'
 
 " Plugin indentLine - show matching indents
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 "let g:indentLine_color_term = 8
 "let g:indentLine_char = '»'
 let g:indentLine_char = '|'
@@ -39,7 +25,7 @@ let g:tex_conceal = ""
 
 
 " Plugin vim-css-color
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 
 " Plugin ConqueTerm
@@ -52,7 +38,7 @@ let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is c
 let g:ConqueGdb_Leader = ','
 
 
-Plugin 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -67,16 +53,19 @@ let g:syntastic_check_on_wq = 0
 " change color of (gutter) Sign Column from gray to no color
 highlight SignColumn ctermbg=none 
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer'  }
 " Close complete buffer after choosing option
 autocmd CompleteDone * pclose
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_register_as_syntastic_checker = 0
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
 highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plug 'junegunn/fzf.vim'
 
 " Vimproc - async vim; needed for vdebugger
 "Plugin 'Shougo/vimproc.vim'
@@ -89,10 +78,9 @@ highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
 "nnoremap <space>/ :Denite -no-empty -no-resize grep<cr>
 "nnoremap <space>s :Denite -quick-match buffer<cr>
 
-"call vundle#rc()
 
 " more bundles here
-call vundle#end()
+call plug#end()
 
 " **************************************
 
@@ -298,6 +286,7 @@ set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
 set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
+set statusline+=%{v:register}                             " Current paste buffer
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
@@ -342,3 +331,4 @@ set whichwrap +=<,h             " let l and h wrap around.
 " load ftplugins and indent files
 filetype plugin indent on
 " **************************************
+set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562

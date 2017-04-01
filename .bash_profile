@@ -223,4 +223,10 @@ extract () {
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
+# Make FZF red colorscheme
+export FZF_DEFAULT_OPTS='--color fg:124,bg:16,hl:202,fg+:214,bg+:52,hl+:231,info:52,prompt:196,spinner:208,pointer:196,marker:208'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
