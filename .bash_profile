@@ -37,6 +37,7 @@ txtrst='\e[0m'    # Text Reset - Useful for avoiding color bleed
 # Initialize autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 export PS1="\[$undpur\][\W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\[$bldblu\] >> \[$txtrst\]"
@@ -53,12 +54,11 @@ export HISTCONTROL=ignoredups
 #alias mysqle='mysql.server stop'
 alias reload='unalias -a && source ~/.bash_profile'
 alias aeonneo='cd ~/Dropbox/AeonNeo/'
-alias davis='cd ~/Dropbox/AeonNeo/UC\ Davis/'
 alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
-alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Winter'
+alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Spring'
 alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
 alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
@@ -223,8 +223,55 @@ extract () {
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
+_gen_fzf_default_opts() {
+  local base03="234"
+  local base02="235"
+  local base01="240"
+  local base00="241"
+  local base0="244"
+  local base1="245"
+  local base2="254"
+  local base3="230"
+  local yellow="136"
+  local orange="166"
+  local red="160"
+  local magenta="125"
+  local violet="61"
+  local blue="33"
+  local cyan="37"
+  local green="64"
+
+  # Comment and uncomment below for the light theme.
+
+  # If the file is text, pretty print with rougify. Otherwise, notify of invalid (binary) file.
+  export FZF_DEFAULT_OPTS="--height 40% --color fg:124,bg:-1,hl:$orange,fg+:15,bg+:52,hl+:231,info:$base00,prompt:196,spinner:208,pointer:196,marker:208 
+  --preview '(if file {} | grep -q text; then rougify {} 2> /dev/null; else echo Invalid File Type; fi)'
+  --reverse
+  "
+}
+_gen_fzf_default_opts
+
 # Make FZF red colorscheme
-export FZF_DEFAULT_OPTS='--color fg:124,bg:16,hl:202,fg+:214,bg+:52,hl+:231,info:52,prompt:196,spinner:208,pointer:196,marker:208'
+alias f="fzf"
+# Will return non-zero status if the current directory is not managed by git
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+fzf-down() {
+  fzf --height 50% "$@" --border
+}
+
+gh() {
+  is_in_git_repo || return
+  git log --date=short --format="%C(magenta) %ar %C(cyan)%h%C(green)%d %s (%an)" --graph --color=always |
+  fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |
+  grep -o "[a-f0-9]\{7,\}"
+}
+
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
