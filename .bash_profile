@@ -70,6 +70,7 @@ alias ..='cd ../..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
 alias ga='git add .'
+alias gm='git mergetool'
 #alias vi="vim -S ~/.vimrc"
 alias matlab="/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop"
 alias hd="cd ~/Dropbox/AeonNeo/UC-Davis/HackDavis/"
@@ -241,9 +242,9 @@ _gen_fzf_default_opts() {
   local cyan="37"
   local green="64"
 
-  # Comment and uncomment below for the light theme.
-
   # If the file is text, pretty print with rougify. Otherwise, notify of invalid (binary) file.
+  # rougify is using theme base16.solarized.dark, which is set in .rvm/gems/ruby-2.3.0/gems/rouge-2.0.7/lib/rouge
+  # rougify is faster than coderay and pygmentize
   export FZF_DEFAULT_OPTS="--height 40% --color fg:124,bg:-1,hl:$orange,fg+:15,bg+:52,hl+:231,info:$base00,prompt:196,spinner:208,pointer:196,marker:208 
   --preview '(if file {} | grep -q text; then rougify {} 2> /dev/null; else echo Invalid File Type; fi)'
   --reverse

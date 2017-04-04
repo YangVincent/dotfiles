@@ -78,6 +78,7 @@ Plug 'junegunn/fzf.vim'
 "nnoremap <space>/ :Denite -no-empty -no-resize grep<cr>
 "nnoremap <space>s :Denite -quick-match buffer<cr>
 
+Plug 'tpope/vim-fugitive'
 
 " more bundles here
 call plug#end()
@@ -120,10 +121,10 @@ let mapleader = "\<Space>"
 noremap <leader>w :w<cr>
 
 " Let '<leader>b' toggle between this and the last accessed buffer
-noremap <leader>l :b#<cr>
+noremap <leader><SPACE> :b#<cr>
 
-" Let '<leader>q' quit all
-noremap <leader>q :qa<cr>
+" Let '<leader>q' save and quit all
+noremap <leader>q :wqa<cr>
 
 " Toggle paste mode on and off
 noremap <leader>p :setlocal paste!<cr>
@@ -141,6 +142,12 @@ noremap <leader>h :sp<cr>
 
 " Toggle fold
 noremap <leader>f za
+
+" vimdiff shortcuts
+" http://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+noremap <leader>l :diffg LO<cr>
+noremap <leader>r :diffg RE<cr>
+noremap <leader>b :diffg BA<cr>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -247,6 +254,7 @@ highlight CursorLineNr ctermfg=white
 highlight Visual  ctermbg=darkblue
 highlight Visual  ctermfg=white
 
+
 " DiffAdd - line was added
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 " DiffDelete - line was removed
@@ -297,7 +305,12 @@ set laststatus=2      " always show statusline
 
 " Remove background/foreground flipping by italic style
 highlight htmlItalic term=NONE cterm=NONE gui=NONE
+highlight htmlBold term=NONE cterm=NONE gui=NONE
 " **************************************
+" Disable htmlBold and htmlItalic in 
+" /usr/local/Cellar/vim/8.0.0503/share/vim/vim80/syntax/html.vim
+hi link htmlBold Storage
+hi link htmlItalic Identifier  
 
 " **************************************
 " * => Turn persistent undo on 
@@ -332,3 +345,4 @@ set whichwrap +=<,h             " let l and h wrap around.
 filetype plugin indent on
 " **************************************
 set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562
+
