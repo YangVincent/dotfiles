@@ -21,6 +21,12 @@ let g:indentLine_char = '|'
 "let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_faster = 1
 let g:tex_conceal = ""
+" On markdown files, where indentLine doesn't apply anyway, set conceallevel
+" to 0 to show asterisks and special characters
+autocmd BufNewFile,BufRead *.md let g:indentLine_setConceal = 0
+autocmd BufNewFile,BufRead *.json let g:indentLine_setConceal = 0
+autocmd BufNewFile,BufRead *.json let g:indentLine_enabled = 0
+
 " end indentLine
 
 
@@ -42,6 +48,9 @@ Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['c'],'passive_filetypes': []  }
+let g:syntastic_quiet_messages={'level':'warnings'}
+
 " Syntastic is auto-disabled by YCM
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -334,9 +343,6 @@ endif
 
 set showcmd                     " show commands
 
-" On markdown files, where indentLine doesn't apply anyway, set conceallevel
-" to 0 to show asterisks and special characters
-autocmd BufNewFile,BufRead *.md let g:indentLine_setConceal = 0
 
 set whichwrap +=>,l
 set whichwrap +=<,h             " let l and h wrap around.
@@ -346,3 +352,11 @@ filetype plugin indent on
 " **************************************
 set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562
 
+" Temporary settings for ECS 150 - Operating Systems
+augroup ProjectSetup
+au BufRead,BufEnter /Users/VincentYang/Dropbox/AeonNeo/UC-Davis/Junior/Spring/ECS150/sshell/*.{c,h} set softtabstop=8 tabstop=8 shiftwidth=8
+augroup END
+
+
+" After vimdiff; or use diffoff!
+set foldcolumn=0

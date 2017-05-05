@@ -1,5 +1,3 @@
-#source ~/.profile
-
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
@@ -42,8 +40,12 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 export PS1="\[$undpur\][\W]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\[$bldblu\] >> \[$txtrst\]"
 
-# Ignore repeated duplicate consecutive commands in history
-export HISTCONTROL=ignoredups
+# Ignore/delete repeated duplicate consecutive commands in history
+export HISTCONTROL=erasedups
+export HISTSIZE="NOTHING"
+export HISTFILESIZE="NOTHING" # no limit
+shopt -s histappend # global history
+#export PROMPT_COMMAND='history -a'
 
 # ALIASES #
 ###########
@@ -74,13 +76,11 @@ alias gm='git mergetool'
 #alias vi="vim -S ~/.vimrc"
 alias matlab="/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop"
 alias hd="cd ~/Dropbox/AeonNeo/UC-Davis/HackDavis/"
-alias grad="cd ~/Dropbox/AeonNeo/UC-Davis/Grad"
+alias grad="cd ~/Dropbox/AeonNeo/Career/Grad"
 alias digitalo="ssh leaf@162.243.144.114"
 alias matloff="cd ~/Dropbox/AeonNeo/UC-Davis/freqparcoord-extension"
 alias rs="rscript"
 alias p3="python3"
-alias lisps="sbcl --script"
-alias lisp="sbcl"
 alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
 alias y="youtube-dl -i -x --audio-format mp3"
 
@@ -88,6 +88,7 @@ alias tls='tmux list-sessions'
 alias ta='tmux a -t'
 alias tn='tmux new -s'
 
+# TODO: make this work even in existing tmux session
 t() {
     if [ $# -eq 0 ]
     then
@@ -223,6 +224,7 @@ extract () {
 }
 
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"
 
 _gen_fzf_default_opts() {
   local base03="234"
@@ -278,3 +280,4 @@ gh() {
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH="/usr/local/opt/openssl/bin:$PATH"
