@@ -26,6 +26,15 @@
   * This is XVim, XCode's vim plugin's customization file
 * [input.ini](./input.ini)
 
+| Category      | Application     |
+|:-------------:|:---------------:|
+| OS            | OSX/Kali/Ubuntu |
+| Terminal      | Terminal        |
+| Editor        | Vi/Vim          |
+| Shell         | Bash            |
+| Window Mgt    | tmux            |
+| Browser       | qutebrowser     |
+
 ![dotfiles logo][logo]
 
 [logo]: https://github.com/YangVincent/dotfiles/blob/master/dotfiles-logo.png
