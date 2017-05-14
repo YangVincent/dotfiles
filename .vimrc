@@ -141,6 +141,9 @@ noremap <leader>p :setlocal paste!<cr>
 " Turn off highlighting until next search
 noremap <leader>/ :noh<cr>
 
+" Fast Align
+noremap <leader>a mzgg=G`z:delmarks z<cr>
+
 " Rotate buffers
 noremap <leader>j :bn<cr>
 noremap <leader>k :bp<cr>
