@@ -83,6 +83,7 @@ alias rs="rscript"
 alias p3="python3"
 alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
 alias y="youtube-dl -i -x --audio-format mp3"
+alias clamd="/usr/local/sbin/clamd"
 
 alias tls='tmux list-sessions'
 alias ta='tmux a -t'

@@ -142,7 +142,11 @@ noremap <leader>p :setlocal paste!<cr>
 noremap <leader>/ :noh<cr>
 
 " Fast Align
+" Further references: http://stackoverflow.com/questions/235839/indent-multiple-lines-quickly-in-vi
 noremap <leader>a mzgg=G`z:delmarks z<cr>
+
+" Convert all tabs to spaces
+noremap <leader>t :exe '%!expand -t ' . &shiftwidth
 
 " Rotate buffers
 noremap <leader>j :bn<cr>
