@@ -215,6 +215,10 @@ set sidescroll=1                " scroll by 1 char at a time (0 for half a strin
 " sets tab to fill wildchars for buffers
 set wildchar=<tab> wildmenu wildmode=full
 
+" Swap return to line and return to position
+nnoremap ' `
+nnoremap ` '
+
 " Easier split navigations - remap left and right, up and down
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
