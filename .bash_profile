@@ -1,3 +1,7 @@
+# Set CLICOLOR if you want Ansi Colors in iTerm2 
+export CLICOLOR=1
+export TERM=xterm-256color
+
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
