@@ -26,14 +26,15 @@
   * This is XVim, XCode's vim plugin's customization file
 * [input.ini](./input.ini)
 
-| Category      | Application     |
-|:-------------:|:---------------:|
-| OS            | OSX/Kali/Ubuntu |
-| Terminal      | Terminal        |
-| Editor        | Vi/Vim          |
-| Shell         | Bash            |
-| Window Mgt    | tmux            |
-| Browser       | qutebrowser     |
+| Category      | Application           |
+|:-------------:|:---------------------:|
+| OS            | OSX/Kali/Ubuntu       |
+| Terminal      | Iterm2                |
+| Editor        | Vi/Vim                |
+| Shell         | Bash                  |
+| Window Mgt    | tmux, BetterSnapTool  |
+| Browser       | qutebrowser           |
+| Other         | fzf                   |
 
 ![dotfiles logo][logo]
 
