@@ -86,18 +86,18 @@ alias matloff="cd ~/Dropbox/AeonNeo/UC-Davis/freqparcoord-extension"
 alias rs="rscript"
 alias p3="python3"
 alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
-alias y="youtube-dl -i -x --audio-format mp3"
 alias clamd="/usr/local/sbin/clamd"
 
 alias tls='tmux list-sessions'
 alias ta='tmux a -t'
 alias tn='tmux new -s'
+alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
 
 # TODO: make this work even in existing tmux session
 t() {
     if [ $# -eq 0 ]
     then
-        tmux attach -t default || tmux new -s default
+        tmux attach -t default -d || tmux new -s default
     elif [ "$1" = "r" ]
     then
         tmux attach -t research || tmux new -s research
@@ -140,13 +140,27 @@ c() {
     fi
 }
 
+# Download music from youtube or soundcloud. 
+# If it is a youtube link, download from youtube.
+# Otherwise, download from soundcloud
+m() {
+    if [[ $1 == *"youtube"* ]]; then
+        youtube-dl -i -x --audio-format mp3 $1
+        # Use regex to remove the hash
+    elif [[ $1 == *"soundcloud"* ]]; then
+        scdl -l $1
+    fi
+    # Spotify: https://github.com/ritiek/spotify-downloader
+
+    # Use spotify to get appropriate artist/other tags
+}
+
 # Setting PATH for Python 3.4
 # # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:${PATH}"
 export PATH
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
-export CLICOLOR=1;
 #Colors specified here: http://geoff.greer.fm/lscolors/
 export LSCOLORS=bxfxcxdxhxegedabagacad
 export GREP_OPTIONS='--color=auto'
@@ -260,7 +274,9 @@ _gen_fzf_default_opts() {
 _gen_fzf_default_opts
 
 # Make FZF red colorscheme
-alias f="fzf"
+f() {
+    vi $(fzf)
+}
 # Will return non-zero status if the current directory is not managed by git
 
 is_in_git_repo() {
@@ -279,6 +295,9 @@ gh() {
   grep -o "[a-f0-9]\{7,\}"
 }
 
+rmd () {
+  pandoc $1 | lynx -stdin
+}
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

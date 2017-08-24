@@ -1,9 +1,9 @@
 " For iterm2
 set t_Co=256
 "
-" **************************************                                                                                                                                                                            
-" * Plug plugin package manager 
-" **************************************                                                                                                                                                                            
+" **************************************
+" * Plug plugin package manager
+" **************************************
 
 set nocompatible
 filetype off
@@ -41,10 +41,10 @@ Plug 'ap/vim-css-color'
 "Plugin 'oplatek/Conque-Shell'
 set shell=/bin/sh
 " Conque GDB is installed; built from source because it doesn't work with Vundle
-let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
-let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
-let g:ConqueGdb_Leader = ','
+"let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
+"let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
+"let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
+"let g:ConqueGdb_Leader = ','
 
 
 Plug 'vim-syntastic/syntastic'
@@ -63,7 +63,7 @@ let g:syntastic_check_on_wq = 0
 "hi SpellBad ctermfg=255 ctermbg=160 guifg=#yyyyyy guibg=#zzzzzz
 "hi SpellCap ctermfg=255 ctermbg=016 guifg=#yyyyyy guibg=#zzzzzz
 " change color of (gutter) Sign Column from gray to no color
-highlight SignColumn ctermbg=none 
+highlight SignColumn ctermbg=none
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer'  }
 " Close complete buffer after choosing option
@@ -82,7 +82,7 @@ Plug 'junegunn/fzf.vim'
 " Vimproc - async vim; needed for vdebugger
 "Plugin 'Shougo/vimproc.vim'
 " Vim debugger
-"Plugin 'idanarye/vim-vebugger' 
+"Plugin 'idanarye/vim-vebugger'
 
 " Dark mode Unite - fuzzy search through files/contents
 "Plugin 'Shougo/denite.nvim'
@@ -101,7 +101,7 @@ call plug#end()
 " * COMMANDS THAT MUST COME AFTER VUNDLE
 " **************************************
 
-" **************************************                                                                                                                                                                            
+" **************************************
 " * VARIABLES
 " **************************************
 
@@ -110,7 +110,7 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 
 " **************************************
-" * ESSENTIAL REMAPS 
+" * ESSENTIAL REMAPS
 " **************************************
 " Enable jk becomes es
 imap jk <Esc>
@@ -186,13 +186,13 @@ set autoindent                  " autoindent on
 set noerrorbells                " bye bye bells :)
 set visualbell                  " Since IntelliJ doesn't understand noerrorbells it will understand to switch to visualbells.
 set modeline                    " show what I'm doing
-set showmode                    " show the mode on the dedicated line 
+set showmode                    " show the mode on the dedicated line
 set nowrap                      " no text wrapping
 set ignorecase                  " search without regards to case
 set backspace=indent,eol,start  " backspace over everything
 set fileformats=unix,dos,mac    " open files from mac/dos
 set exrc                        " open local config files
-set nojoinspaces                " don't add white space when I don't tell 
+set nojoinspaces                " don't add white space when I don't tell
 set ruler                       " which line am I on?
 
 set showmatch                   " ensure Dyck language; show matching {()} or as typed.
@@ -214,7 +214,7 @@ set splitright
 set scrolloff=3                 " keep this many lines between cursor and top/bottom when scrolling
 set sidescrolloff=7             " if <7 columns from end or beginning, scroll
 set sidescroll=1                " scroll by 1 char at a time (0 for half a string)
- 
+
 " sets tab to fill wildchars for buffers
 set wildchar=<tab> wildmenu wildmode=full
 
@@ -230,7 +230,7 @@ nnoremap <C-H> <C-W><C-H>
 " **************************************
 
 " Show syntax colors
-syntax on                          
+syntax on
 
 " **************************************
 " * Folding
@@ -240,9 +240,12 @@ set foldmethod=syntax
 set nofoldenable                " don't fold on file open
 
 
-" persistent save folds 
+" persistent save folds
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
+
+" On save, remove trailing whitespace
+" autocmd BufWritePre * %s/\s\+$//e
 
 "set foldmarker={,}
 " **************************************
@@ -261,12 +264,12 @@ au BufRead,BufNewfile Makefile set ts=4 sw=4 noexpandtab
 " **************************************
 
 " **************************************
-" * COLOR HIGHLIGHTING 
+" * COLOR HIGHLIGHTING
 " **************************************
 "Themes
-colorscheme zellner  
+colorscheme zellner
 
-" Highlight color of Matching parentheses 
+" Highlight color of Matching parentheses
 highlight MatchParen cterm=underline ctermbg=none ctermfg=white
 
 " Line number highlight
@@ -287,7 +290,7 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 " DiffText - exact part of the line that changed
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
-highlight SignColumn ctermbg=none 
+highlight SignColumn ctermbg=none
 
 " YCM Highlighting
 highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
@@ -315,7 +318,7 @@ set statusline+=%1*\ %<%F\                                "File+path
 set statusline+=%2*\ %y\                                  "FileType
 set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
-set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
+set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
 set statusline+=%{v:register}                             " Current paste buffer
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
@@ -330,13 +333,13 @@ set laststatus=2      " always show statusline
 highlight htmlItalic term=NONE cterm=NONE gui=NONE
 highlight htmlBold term=NONE cterm=NONE gui=NONE
 " **************************************
-" Disable htmlBold and htmlItalic in 
+" Disable htmlBold and htmlItalic in
 " /usr/local/Cellar/vim/8.0.0503/share/vim/vim80/syntax/html.vim
 hi link htmlBold Storage
-hi link htmlItalic Identifier  
+hi link htmlItalic Identifier
 
 " **************************************
-" * => Turn persistent undo on 
+" * => Turn persistent undo on
 " *   means that you can undo even when you close a buffer/VIM
 " **************************************
 try
@@ -346,13 +349,13 @@ catch
 endtry
 " **************************************
 
-" **************************************                                                                                                                                                                            
+" **************************************
 " * Uncomment the following to have Vim jump to the last position when reopening a file
-" **************************************                                                                                                                                                                            
+" **************************************
 if has("autocmd")
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-" **************************************                                                                                                                                                                            
+" **************************************
 
 
 set showcmd                     " show commands
