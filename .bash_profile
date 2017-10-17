@@ -98,6 +98,14 @@ t() {
     if [ $# -eq 0 ]
     then
         tmux attach -t default -d || tmux new -s default
+    #elif [ "$1" = "a" ]
+    #then
+    #    tmux detach
+    #    t r
+    #    tmux detach
+    #    t w
+    #    tmux detach
+    #    t
     elif [ "$1" = "r" ]
     then
         tmux attach -t research || tmux new -s research
@@ -275,7 +283,10 @@ _gen_fzf_default_opts
 
 # Make FZF red colorscheme
 f() {
-    vi $(fzf)
+    FILE=$(fzf)
+    if (( ${#FILE} > 0 )); then
+        vi $FILE
+    fi
 }
 # Will return non-zero status if the current directory is not managed by git
 
