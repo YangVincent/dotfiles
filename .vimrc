@@ -369,11 +369,5 @@ filetype plugin indent on
 " **************************************
 set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562
 
-" Temporary settings for ECS 150 - Operating Systems
-augroup ProjectSetup
-au BufRead,BufEnter /Users/VincentYang/Dropbox/AeonNeo/UC-Davis/Junior/Spring/ECS150/sshell/*.{c,h} set softtabstop=8 tabstop=8 shiftwidth=8
-augroup END
-
-
 " After vimdiff; or use diffoff!
 set foldcolumn=0

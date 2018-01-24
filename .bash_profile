@@ -64,7 +64,7 @@ alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
-alias now='cd ~/Dropbox/AeonNeo/UC\-Davis/Junior/Spring'
+alias now='cd ~/Dropbox/AeonNeo/UC-Davis/Senior/Winter'
 alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
 alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
@@ -224,6 +224,10 @@ alias tmlog="syslog -F '\$Time \$Message' -k Sender com.apple.backupd-auto -k Ti
 # list TODO/FIX lines from the current project
 alias todos="ack -n --nogroup '(TODO|FIX(ME)?):'"
 
+lfind() {
+    sudo find / -type f -size +100000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+}
+
 # interactive fasd
 #alias zi="fasd -e cd -i"
 
@@ -284,6 +288,7 @@ _gen_fzf_default_opts
 # Make FZF red colorscheme
 f() {
     FILE=$(fzf)
+    echo $FILE
     if (( ${#FILE} > 0 )); then
         vi $FILE
     fi
@@ -308,6 +313,13 @@ gh() {
 
 rmd () {
   pandoc $1 | lynx -stdin
+}
+
+# List all items in brew list with size
+bl() {
+    for pkg in `brew list -f1 | egrep -v '\.|\.\.'`
+      do echo $pkg `brew info $pkg | egrep '[0-9]* files, ' | sed 's/^.*[0-9]* files, \(.*\)).*$/\1/'`
+    done
 }
 
 
