@@ -34,6 +34,7 @@
 | Shell         | Bash                  |
 | Window Mgt    | tmux, BetterSnapTool  |
 | Browser       | qutebrowser           |
+| Notes         | Quiver, org-mode      |
 | Other         | fzf                   |
 
 ![dotfiles logo][logo]
