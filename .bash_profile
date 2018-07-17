@@ -64,7 +64,7 @@ alias life='cd ~/Dropbox/AeonNeo/Life'
 alias dotfiles='cd ~/Dropbox/AeonNeo/dotfiles'
 alias projects='cd ~/Dropbox/AeonNeo/Projects'
 alias sublime='open /Applications/Sublime\ Text\ 2.app/'
-alias now='cd ~/Dropbox/AeonNeo/UC-Davis/Senior/Winter'
+alias now='cd /Users/VincentYang/Dropbox/AeonNeo/UC-Davis/Senior/Spring/260'
 alias bcnc='cd ~/Dropbox/AeonNeo/UC\-Davis/BCNC'
 alias dcg='cd ~/Dropbox/AeonNeo/UC\-Davis/DCG'
 alias :q='exit'
@@ -84,14 +84,14 @@ alias grad="cd ~/Dropbox/AeonNeo/Career/Grad"
 alias digitalo="ssh leaf@162.243.144.114"
 alias matloff="cd ~/Dropbox/AeonNeo/UC-Davis/freqparcoord-extension"
 alias rs="rscript"
-alias p3="python3"
+alias p3="python3.6"
 alias rload="echo 'library(freqparcoord.cd, lib.loc = \"~/R/\")' && R CMD INSTALL -l ~/R"
 alias clamd="/usr/local/sbin/clamd"
 
 alias tls='tmux list-sessions'
 alias ta='tmux a -t'
 alias tn='tmux new -s'
-alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
+#alias emacs="/usr/local/Cellar/emacs/25.2/Emacs.app/Contents/MacOS/Emacs -nw"
 
 # TODO: make this work even in existing tmux session
 t() {
@@ -328,3 +328,13 @@ bl() {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/python@2/bin:$PATH"
+
+##
+# Your previous /Users/VincentYang/.bash_profile file was backed up as /Users/VincentYang/.bash_profile.macports-saved_2018-07-11_at_23:23:52
+##
+
+# MacPorts Installer addition on 2018-07-11_at_23:23:52: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+

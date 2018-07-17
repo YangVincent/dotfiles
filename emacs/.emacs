@@ -1,8 +1,9 @@
-
 ; stop showing the menu/tool/scroll bar
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(if window-system
+    (tool-bar-mode -1))
+(if window-system
+    (scroll-bar-mode -1))
 
 ;; ido has useful autocomplete 
 (ido-mode 1)

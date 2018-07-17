@@ -36,16 +36,7 @@ autocmd BufNewFile,BufRead *.json let g:indentLine_enabled = 0
 " Plugin vim-css-color
 Plug 'ap/vim-css-color'
 
-
 " Plugin ConqueTerm
-"Plugin 'oplatek/Conque-Shell'
-set shell=/bin/sh
-" Conque GDB is installed; built from source because it doesn't work with Vundle
-"let g:ConqueTerm_Color = 2         " 1: strip color after 200 lines, 2: always with color
-"let g:ConqueTerm_CloseOnEnd = 1    " close conque when program ends running
-"let g:ConqueTerm_StartMessages = 0 " display warning messages if conqueTerm is configured incorrectly"
-"let g:ConqueGdb_Leader = ','
-
 
 Plug 'vim-syntastic/syntastic'
 set statusline+=%#warningmsg#
@@ -65,16 +56,16 @@ let g:syntastic_check_on_wq = 0
 " change color of (gutter) Sign Column from gray to no color
 highlight SignColumn ctermbg=none
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer'  }
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer'  }
 " Close complete buffer after choosing option
-autocmd CompleteDone * pclose
-let g:ycm_python_binary_path = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_register_as_syntastic_checker = 0
+"autocmd CompleteDone * pclose
+"let g:ycm_python_binary_path = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_register_as_syntastic_checker = 0
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
-highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
-highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
+"highlight YcmErrorSection cterm=none ctermbg=red ctermfg=black
+"highlight YcmWarningSection cterm=none ctermbg=yellow ctermfg=black
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plug 'junegunn/fzf.vim'
@@ -367,7 +358,7 @@ set whichwrap +=<,h             " let l and h wrap around.
 " load ftplugins and indent files
 filetype plugin indent on
 " **************************************
-set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562
+"set shortmess+=c " https://github.com/Valloric/YouCompleteMe/issues/1562
 
 " After vimdiff; or use diffoff!
 set foldcolumn=0
