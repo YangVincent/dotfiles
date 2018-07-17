@@ -30,11 +30,11 @@
 |:-------------:|:---------------------:|
 | OS            | OSX/Kali/Ubuntu       |
 | Terminal      | Iterm2                |
-| Editor        | Vi/Vim                |
+| Editor        | Vi/Vim/emacs + evil   |
 | Shell         | Bash                  |
 | Window Mgt    | tmux, BetterSnapTool  |
 | Browser       | qutebrowser           |
-| Notes         | Quiver, org-mode      |
+| Notes         | org-mode              |
 | Other         | fzf                   |
 
 ![dotfiles logo][logo]
