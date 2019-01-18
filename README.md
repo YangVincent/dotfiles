@@ -1,7 +1,6 @@
 #### Files:
 
 * [bash_profile](./.bash_profile)
-  * This configures my bash command line
 * [bashrc](./.bashrc)
 * [gitignore_global](./.gitignore_global)
   * The gitignore file tells git which files to ignore (class files, etc)
@@ -31,11 +30,11 @@
 | OS            | OSX/Kali/Ubuntu       |
 | Terminal      | Iterm2                |
 | Editor        | Vi/Vim/emacs + evil   |
-| Shell         | Bash                  |
+| Shell         | Bash/Zsh              |
 | Window Mgt    | tmux, BetterSnapTool  |
 | Browser       | qutebrowser           |
 | Notes         | org-mode              |
-| Other         | fzf                   |
+| Other         | fzf, autojump, tldr   |
 
 ![dotfiles logo][logo]
 
