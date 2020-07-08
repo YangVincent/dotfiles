@@ -8,8 +8,19 @@ set t_Co=256
 set nocompatible
 filetype off
 
+" Install Plug by default
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
+Plug 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/aeonneo/content',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'index': 'about'}]
 Plug 'jiangmiao/auto-pairs'
 " Don't jump to close bracket on different line
 let g:AutoPairsMultilineClose = 0
